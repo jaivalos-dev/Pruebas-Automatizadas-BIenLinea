@@ -4,6 +4,7 @@ import Modulos.HomePublico.Slider;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -42,7 +43,12 @@ public class Main {
         test = extent.createTest("Home Público");
 
         Slider slider = new Slider(driver, test);
-        slider.leftSlides();
+        try {
+            slider.leftSlides();
+            test.log(Status.PASS, "Slider funcional");
+        } catch (Exception e){
+            test.log(Status.FAIL, "Slider - FAIL");
+        }
 
     }
 
