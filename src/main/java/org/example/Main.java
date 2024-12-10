@@ -1,5 +1,6 @@
 package org.example;
 
+import Modulos.HomePublico.NavBar;
 import Modulos.HomePublico.Slider;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -42,12 +43,26 @@ public class Main {
 
         test = extent.createTest("Home Público");
 
-        Slider slider = new Slider(driver, test);
-        try {
-            slider.leftSlides();
-            test.log(Status.PASS, "Slider funcional");
-        } catch (Exception e){
-            test.log(Status.FAIL, "Slider - FAIL");
+        try{
+            Slider slider = new Slider(driver, test);
+            try {
+                slider.leftSlides();
+                test.log(Status.INFO, "Slider funcional");
+            } catch (Exception e){
+                test.log(Status.FAIL, "Slider - FAIL");
+            }
+
+            NavBar navbar = new NavBar(driver, test);
+            try {
+                navbar.botonesNavbar();
+                test.log(Status.INFO, "NavBar funcional");
+            } catch (Exception e){
+                test.log(Status.FAIL, "NavBar - FAIL");
+            }
+
+        }catch (Exception e){
+            test.log(Status.FAIL, "Home Público - FAIL - "+e);
+            throw e;
         }
 
     }
