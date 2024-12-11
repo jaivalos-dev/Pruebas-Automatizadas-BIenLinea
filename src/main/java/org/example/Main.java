@@ -2,6 +2,7 @@ package org.example;
 
 import Modulos.HomePublico.NavBar;
 import Modulos.HomePublico.Slider;
+import Modulos.HomePublico.Tips;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -59,6 +60,16 @@ public class Main {
             } catch (Exception e){
                 test.log(Status.FAIL, "NavBar - FAIL");
             }
+
+            Tips tips = new Tips(driver, test);
+            try {
+                tips.validateTips();
+                test.log(Status.INFO, "Tips funcional");
+            } catch (Exception e){
+                test.log(Status.FAIL, "Tips - FAIL");
+            }
+
+            test.log(Status.PASS, "Home Público Funcional ✓");
 
         }catch (Exception e){
             test.log(Status.FAIL, "Home Público - FAIL - "+e);
