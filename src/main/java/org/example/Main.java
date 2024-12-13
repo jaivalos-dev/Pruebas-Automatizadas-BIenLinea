@@ -102,6 +102,14 @@ public class Main {
                 throw e;
             }
 
+            try {
+                RecContra.validarContenedor();
+                test.log(Status.INFO, "Contenedores funcionales");
+            } catch (Exception e){
+                test.log(Status.FAIL, "Contenedores - FAIL");
+                throw e;
+            }
+
             /*NavBar navbar = new NavBar(driver, test);
             try {
                 navbar.botonesNavbar();
