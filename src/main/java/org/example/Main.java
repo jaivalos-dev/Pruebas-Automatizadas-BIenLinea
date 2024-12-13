@@ -95,7 +95,7 @@ public class Main {
         try{
             RecuperarContra RecContra = new RecuperarContra(driver, test, "9893", "kjasdjf");
             try {
-                RecuperarContra();
+                RecContra.validacionTextos();
                 test.log(Status.INFO, "Textos de recuperación de contraseña funcionales");
             } catch (Exception e){
                 test.log(Status.FAIL, "Textos de recuperación de contraseña - FAIL");
